@@ -1,0 +1,9 @@
+<wpml-config>
+    <admin-texts>
+        <key name="theme_mods_gema">
+            <key name="gema_options">
+                <key name="gema_footer_copyright"/>
+            </key>
+        </key>
+    </admin-texts>
+</wpml-config>

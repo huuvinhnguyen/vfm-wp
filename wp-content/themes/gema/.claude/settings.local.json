@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:vietfarmy.vn)",
+      "Bash(grep -rn \"og:image\\\\|og:title\\\\|og:description\\\\|add_filter.*og_\\\\|add_action.*og_\\\\|wpseo_\\\\|rankmath\\\\|schema\" /Users/vinhnguyen/Desktop/vietfarmy-theme/functions.php /Users/vinhnguyen/Desktop/vietfarmy-theme/inc/*.php)",
+      "Bash(python3 -c ':*)"
+    ]
+  }
+}

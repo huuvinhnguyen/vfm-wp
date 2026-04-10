@@ -1,0 +1,29 @@
+# WordPress config
+wp-config.php
+
+# Ignore toàn bộ wp-content
+/wp-content/*
+
+# Cho phép plugins & themes
+!/wp-content/themes/
+!/wp-content/plugins/
+
+# Ignore tất cả bên trong
+/wp-content/themes/*
+/wp-content/plugins/*
+
+# Cho phép theme của bạn
+!/wp-content/themes/gema/
+!/wp-content/themes/gema/**
+
+# Cho phép plugin của bạn
+!/wp-content/plugins/vnf-slideshow/
+!/wp-content/plugins/vnf-slideshow/**
+
+# Uploads & cache
+/wp-content/uploads/
+/wp-content/cache/
+# Ignore WordPress core
+/wp-admin/
+/wp-includes/
+/wp-*.php

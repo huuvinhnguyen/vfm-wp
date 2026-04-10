@@ -1,0 +1,259 @@
+/* =============================================
+   VIETFARMY - HORIZONTAL MENU STYLES
+   ============================================= */
+
+:root {
+    --vietfarmy-green: #2D5016;
+    --vietfarmy-brown: #4B2C20;
+    --vietfarmy-gold: #C0A080;
+    --vietfarmy-light: #F9F4F0;
+}
+
+/* RESET & OVERRIDE DEFAULT STYLES */
+.site-header {
+    background: var(--vietfarmy-light) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* HEADER TOP - Quick Info Bar */
+.header-top {
+    background: linear-gradient(135deg, var(--vietfarmy-green), #1a3009) !important;
+    color: #fff !important;
+    padding: 8px 0 !important;
+    text-align: center !important;
+}
+
+.header-top .container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 30px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    flex-wrap: wrap !important;
+}
+
+.header-top .hotline {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffd700 !important;
+}
+
+.header-top .slogan {
+    font-size: 13px !important;
+    opacity: 0.9 !important;
+}
+
+/* HEADER MAIN - Logo & Menu Row */
+.header-main {
+    background: #fff !important;
+    padding: 15px 0 !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08) !important;
+}
+
+.header-main .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    gap: 20px !important;
+}
+
+/* LOGO */
+.header-main .logo a {
+    display: block !important;
+}
+
+.header-main .logo img {
+    height: 70px !important;
+    width: auto !important;
+}
+
+/* BRANDING (if using default) */
+.site-branding {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+}
+
+.site-branding .custom-logo-link img,
+.site-branding img {
+    height: 70px !important;
+    width: auto !important;
+}
+
+/* =============================================
+   MAIN NAVIGATION - HORIZONTAL CENTER
+   ============================================= */
+.main-navigation {
+    flex: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Menu Container */
+.main-navigation .nav-menu,
+.main-navigation #primary-menu {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    flex-wrap: nowrap !important;
+}
+
+/* Menu Items */
+.main-navigation li {
+    position: relative !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Menu Links */
+.main-navigation a,
+.main-navigation .nav-menu a,
+.main-navigation #primary-menu a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 15px 25px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    color: var(--vietfarmy-brown) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    border-left: 1px solid rgba(75,44,32,0.12) !important;
+    white-space: nowrap !important;
+}
+
+.main-navigation li:first-child a {
+    border-left: none !important;
+}
+
+/* Hover Effects */
+.main-navigation a:hover,
+.main-navigation li:hover > a,
+.main-navigation .current-menu-item > a,
+.main-navigation .current-menu-parent > a {
+    background: var(--vietfarmy-green) !important;
+    color: #fff !important;
+}
+
+/* Dropdown Submenu */
+.main-navigation .sub-menu,
+.main-navigation .children {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    background: #fff !important;
+    min-width: 220px !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15) !important;
+    border-top: 3px solid var(--vietfarmy-green) !important;
+    z-index: 999 !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 10px 0 !important;
+}
+
+.main-navigation li:hover > .sub-menu,
+.main-navigation li:hover > .children {
+    display: block !important;
+}
+
+.main-navigation .sub-menu li a,
+.main-navigation .children li a {
+    border-left: none !important;
+    border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+    padding: 12px 20px !important;
+    text-align: left !important;
+}
+
+.main-navigation .sub-menu li a:hover {
+    background: var(--vietfarmy-green) !important;
+    color: #fff !important;
+}
+
+/* =============================================
+   RESPONSIVE - MOBILE
+   ============================================= */
+@media (max-width: 900px) {
+    /* Stack header elements */
+    .header-main .container {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    /* Logo centered */
+    .header-main .logo,
+    .site-branding {
+        justify-content: center !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Navigation full width */
+    .main-navigation {
+        width: 100% !important;
+    }
+
+    /* Menu vertical on mobile */
+    .main-navigation .nav-menu,
+    .main-navigation #primary-menu {
+        flex-direction: column !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .main-navigation li {
+        width: 100% !important;
+    }
+
+    .main-navigation a {
+        border-left: none !important;
+        border-bottom: 1px solid rgba(75,44,32,0.15) !important;
+        padding: 14px 20px !important;
+    }
+
+    /* Submenu on mobile */
+    .main-navigation .sub-menu,
+    .main-navigation .children {
+        position: static !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        border-top: none !important;
+        background: rgba(0,0,0,0.05) !important;
+    }
+
+    .main-navigation .sub-menu a {
+        padding-left: 40px !important;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .header-top .container {
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+
+    .header-main .logo img,
+    .site-branding img {
+        height: 50px !important;
+    }
+
+    .main-navigation a {
+        font-size: 13px !important;
+        padding: 12px 15px !important;
+    }
+}
