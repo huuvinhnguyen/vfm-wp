@@ -9,28 +9,48 @@ add_shortcode('vnf_gallery', 'vnf_gl_shortcode');
 
 function vnf_gl_shortcode($atts) {
     $atts = shortcode_atts(array(
-        'id'     => '0',
-        'slug'   => '',
-        'layout' => '',
-        'columns'=> '',
+        'id'      => '0',
+        'slug'    => '',
+        'ids'     => '',       // Danh sách ID ảnh: 1,2,3,4
+        'layout'  => 'grid',
+        'columns' => '4',
+        'size'    => 'medium', // thumbnail, medium, large, full
     ), $atts, 'vnf_gallery');
 
-    $gallery_id = 0;
-    if (!empty($atts['slug'])) {
-        $gallery_id = vnf_gl_get_gallery_id_by_slug($atts['slug']);
+    $images = array();
+    $settings = array();
+    $gallery_uid = 'vgl-' . substr(md5(uniqid()), 0, 8);
+
+    // Ưu tiên: ids="1,2,3" > id="1" > slug="abc"
+    if (!empty($atts['ids'])) {
+        // Lấy ảnh theo danh sách ID
+        $image_ids = array_filter(array_map('intval', explode(',', $atts['ids'])));
+        if (!empty($image_ids)) {
+            $images = vnf_gl_get_images_by_ids($image_ids);
+        }
     } elseif (!empty($atts['id']) && is_numeric($atts['id'])) {
         $gallery_id = (int) $atts['id'];
+        $images = vnf_gl_get_images($gallery_id);
+        $gallery_data = vnf_gl_get_gallery_data($gallery_id);
+        $settings = vnf_gl_get_settings($gallery_id);
+        if ($gallery_data) {
+            $atts['layout'] = $gallery_data->layout;
+            $atts['columns'] = $gallery_data->columns;
+        }
+    } elseif (!empty($atts['slug'])) {
+        $gallery_id = vnf_gl_get_gallery_id_by_slug($atts['slug']);
+        if ($gallery_id) {
+            $images = vnf_gl_get_images($gallery_id);
+            $gallery_data = vnf_gl_get_gallery_data($gallery_id);
+            $settings = vnf_gl_get_settings($gallery_id);
+            if ($gallery_data) {
+                $atts['layout'] = $gallery_data->layout;
+                $atts['columns'] = $gallery_data->columns;
+            }
+        }
     }
-    if (!$gallery_id) return '<div class="vnf-gl-error">Gallery không tồn tại.</div>';
 
-    $images = vnf_gl_get_images($gallery_id);
-    $settings = vnf_gl_get_settings($gallery_id);
     if (empty($images)) return '';
-
-    $gallery_data = vnf_gl_get_gallery_data($gallery_id);
-
-    $layout = !empty($atts['layout']) ? sanitize_key($atts['layout']) : ($gallery_data->layout ?? 'grid');
-    $columns = !empty($atts['columns']) ? (int) $atts['columns'] : ($gallery_data->columns ?? 4);
 
     $defaults = array(
         'spacing'       => 8,
@@ -42,13 +62,13 @@ function vnf_gl_shortcode($atts) {
     );
     $settings = wp_parse_args($settings, $defaults);
 
-    $gallery_uid = 'vgl-' . substr(md5(uniqid()), 0, 8);
+    $layout  = sanitize_key($atts['layout']);
+    $columns = max(1, min(6, (int) $atts['columns']));
+    $size    = sanitize_key($atts['size']);
+    $spacing = (int) $settings['spacing'];
+    $radius  = (int) $settings['border_radius'];
 
     ob_start();
-
-    // Render inline CSS
-    $spacing = (int) $settings['spacing'];
-    $radius = (int) $settings['border_radius'];
     ?>
     <style>
     .vnf-gl-wrap-<?php echo $gallery_uid; ?> {
@@ -111,15 +131,15 @@ function vnf_gl_shortcode($atts) {
     }
     .vnf-gl-wrap-<?php echo $gallery_uid; ?>.vgl-layout-slider {
         display: flex;
-        overflow: hidden;
+        overflow-x: auto;
         gap: var(--vgl-spacing);
         scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
     }
     .vnf-gl-wrap-<?php echo $gallery_uid; ?>.vgl-layout-slider .vgl-item {
         flex: 0 0 calc((100% - var(--vgl-spacing) * <?php echo max(0, $columns - 1); ?>) / <?php echo $columns; ?>);
         scroll-snap-align: start;
     }
-    /* Lightbox override for our gallery */
     .vnf-gl-wrap-<?php echo $gallery_uid; ?> a[data-lightbox] {
         display: block;
     }
@@ -129,7 +149,7 @@ function vnf_gl_shortcode($atts) {
     // Build gallery HTML
     $items_html = '';
     foreach ($images as $image) {
-        $thumb = vnf_gl_render_image($image);
+        $thumb = vnf_gl_get_image_by_size($image, $size);
         $full = vnf_gl_render_full_image($image);
         $alt = esc_attr($image->alt_text ?: $image->title);
         $title = esc_html($image->title);
@@ -213,7 +233,6 @@ function vnf_gl_shortcode($atts) {
             });
             imgs.forEach(function(img) { obs.observe(img); });
         } else {
-            // Fallback
             imgs.forEach(function(img) {
                 if (img.dataset.src) {
                     img.src = img.dataset.src;
@@ -227,6 +246,40 @@ function vnf_gl_shortcode($atts) {
 
     <?php
     return ob_get_clean();
+}
+
+/**
+ * Lấy ảnh theo danh sách ID
+ */
+function vnf_gl_get_images_by_ids($ids = array()) {
+    if (empty($ids)) return array();
+
+    global $wpdb;
+    $ids_str = implode(',', array_map('intval', $ids));
+    return $wpdb->get_results(
+        "SELECT * FROM {$wpdb->prefix}vnf_gallery_images WHERE id IN ($ids_str) AND status = 1 ORDER BY FIELD(id, $ids_str)"
+    );
+}
+
+/**
+ * Lấy ảnh theo kích thước
+ */
+function vnf_gl_get_image_by_size($image, $size = 'medium') {
+    // Nếu có image_id từ WordPress Media Library
+    if (!empty($image->image_id)) {
+        $url = wp_get_attachment_image_url($image->image_id, $size);
+        if ($url) return $url;
+    }
+
+    // Fallback: dùng thumb_url hoặc image_url
+    if (!empty($image->thumb_url)) {
+        return esc_url($image->thumb_url);
+    }
+    if (!empty($image->image_url)) {
+        return esc_url($image->image_url);
+    }
+
+    return '';
 }
 
 function vnf_gl_get_gallery_id_by_slug($slug) {
@@ -261,6 +314,7 @@ function vnf_gl_block_render($atts) {
     $atts = shortcode_atts(array(
         'id'   => '',
         'slug' => '',
+        'ids'  => '',
     ), $atts, 'vnf_gallery');
 
     return vnf_gl_shortcode($atts);

@@ -216,6 +216,17 @@
     cursor: grabbing;
 }
 
+/* Image ID badge */
+.vnf-gl-image-id {
+    font-size: 11px;
+    color: #999;
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
 .vnf-gl-image-item.ui-sortable-placeholder {
     background: #f0f0f0;
     border: 2px dashed #ccc;

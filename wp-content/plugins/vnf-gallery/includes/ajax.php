@@ -171,6 +171,7 @@ function vnf_gl_render_images_list_html($images) {
         $img = vnf_gl_render_image($image);
         $html .= '<li class="vnf-gl-image-item" data-id="' . $image->id . '" data-order="' . $idx . '">';
         $html .= '<span class="vnf-gl-drag-handle" title="Kéo để sắp xếp">&#9776;</span>';
+        $html .= '<span class="vnf-gl-image-id" title="ID ảnh - Dùng trong shortcode [vnf_gallery ids=&quot;...&quot;]">#' . $image->id . '</span>';
         $html .= '<div class="vnf-gl-image-thumb">';
         if ($img) {
             $html .= '<img src="' . esc_url($img) . '" alt="">';

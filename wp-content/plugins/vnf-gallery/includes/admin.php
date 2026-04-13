@@ -309,6 +309,7 @@ function vnf_gl_admin_page() {
                             ?>
                                 <li class="vnf-gl-image-item" data-id="<?php echo $image->id; ?>" data-order="<?php echo $idx; ?>">
                                     <span class="vnf-gl-drag-handle" title="Kéo để sắp xếp">&#9776;</span>
+                                    <span class="vnf-gl-image-id" title="ID ảnh - Dùng trong shortcode [vnf_gallery ids=&quot;...&quot;]">#<?php echo $image->id; ?></span>
                                     <div class="vnf-gl-image-thumb">
                                         <?php if ($img) : ?>
                                             <img src="<?php echo esc_url($img); ?>" alt="">
