@@ -1,0 +1,124 @@
+/* VietFarmy Gallery - Lightbox Styles */
+
+.vnf-gl-lb-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 99998;
+}
+
+.vnf-gl-lb-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.vnf-gl-lb-loading {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.vnf-gl-lb-image {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.5);
+}
+
+.vnf-gl-lb-title {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    padding: 8px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,.6));
+}
+
+.vnf-gl-lb-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.15);
+    border: none;
+    color: #fff;
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vnf-gl-lb-nav button:hover {
+    background: rgba(255,255,255,.3);
+}
+
+.vnf-gl-lb-prev {
+    left: 20px;
+}
+
+.vnf-gl-lb-next {
+    right: 20px;
+}
+
+.vnf-gl-lb-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: rgba(255,255,255,.15);
+    font-size: 24px;
+}
+
+.vnf-gl-lb-nav button:focus {
+    outline: 2px solid rgba(255,255,255,.5);
+}
+
+/* Animation */
+@keyframes vnf-gl-lb-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes vnf-gl-lb-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.vnf-gl-lb-container {
+    animation: vnf-gl-lb-scale-in .25s ease;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .vnf-gl-lb-nav button {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+    .vnf-gl-lb-prev { left: 10px; }
+    .vnf-gl-lb-next { right: 10px; }
+    .vnf-gl-lb-close { top: 10px; right: 10px; }
+}

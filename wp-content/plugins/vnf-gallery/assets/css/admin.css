@@ -1,0 +1,304 @@
+/* VietFarmy Gallery - Admin Styles */
+
+.vnf-gl-admin {
+    max-width: 1400px;
+}
+
+.vnf-gl-admin .vnf-gl-layout {
+    display: flex;
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.vnf-gl-admin .vnf-gl-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: #fff;
+    padding: 16px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.vnf-gl-admin .vnf-gl-sidebar h2 {
+    font-size: 14px;
+    margin: 0 0 12px;
+}
+
+.vnf-gl-admin .vnf-gl-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vnf-gl-admin .vnf-gl-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.vnf-gl-admin .vnf-gl-list a {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #23282d;
+}
+
+.vnf-gl-admin .vnf-gl-list a:hover {
+    background: #f0f0f0;
+}
+
+.vnf-gl-admin .vnf-gl-list a.active {
+    background: #0073aa;
+    color: #fff;
+}
+
+.vnf-gl-admin .vnf-gl-list a .dashicons {
+    font-size: 18px;
+}
+
+.vnf-gl-admin .vnf-gl-delete-gl {
+    padding: 4px;
+    color: #b32d2e;
+    text-decoration: none;
+}
+
+.vnf-gl-admin .vnf-gl-delete-gl:hover {
+    color: #dc3232;
+}
+
+.vnf-gl-admin .vnf-gl-main {
+    flex: 1;
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+}
+
+/* Dialog */
+.vnf-gl-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vnf-gl-dialog-inner {
+    background: #fff;
+    padding: 24px;
+    border-radius: 4px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.3);
+    min-width: 400px;
+    max-width: 90vw;
+}
+
+.vnf-gl-dialog-inner h2 {
+    margin-top: 0;
+}
+
+.vnf-gl-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 99999;
+}
+
+/* Form */
+.vnf-gl-add-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+}
+
+.vnf-gl-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.vnf-gl-field-group {
+    margin-bottom: 12px;
+}
+
+.vnf-gl-field-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+/* Image tabs */
+.vnf-gl-img-source-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.vnf-gl-tab-btn {
+    padding: 6px 12px;
+    border: 1px solid #ccd0d4;
+    background: #f0f0f0;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.vnf-gl-tab-btn.active {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+
+.vnf-gl-tab-content {
+    padding: 12px 0;
+}
+
+/* URL Preview */
+.vnf-gl-url-preview {
+    margin-top: 8px;
+    max-height: 100px;
+    overflow: hidden;
+}
+
+.vnf-gl-url-preview img {
+    max-height: 80px;
+    max-width: 150px;
+    height: auto;
+}
+
+/* File Preview */
+.vnf-gl-file-preview {
+    margin-top: 8px;
+}
+
+.vnf-gl-file-preview img {
+    max-height: 80px;
+    max-width: 150px;
+    height: auto;
+}
+
+.vnf-gl-upload-btn {
+    margin-top: 4px;
+}
+
+/* Sortable List */
+.vnf-gl-sortable {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vnf-gl-image-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e2e4e7;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    cursor: grab;
+}
+
+.vnf-gl-image-item:active {
+    cursor: grabbing;
+}
+
+.vnf-gl-image-item.ui-sortable-placeholder {
+    background: #f0f0f0;
+    border: 2px dashed #ccc;
+}
+
+.vnf-gl-drag-handle {
+    color: #999;
+    cursor: grab;
+    font-size: 18px;
+    padding: 4px;
+}
+
+.vnf-gl-image-thumb {
+    width: 80px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vnf-gl-image-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vnf-gl-no-img {
+    font-size: 10px;
+    color: #999;
+}
+
+.vnf-gl-image-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.vnf-gl-image-info strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.vnf-gl-image-info p {
+    margin: 4px 0;
+    color: #666;
+    font-size: 13px;
+}
+
+.vnf-gl-link-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #0073aa;
+    margin-top: 4px;
+}
+
+.vnf-gl-image-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.vnf-gl-msg {
+    margin-left: 12px;
+    color: #40860a;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .vnf-gl-admin .vnf-gl-layout {
+        flex-direction: column;
+    }
+    .vnf-gl-admin .vnf-gl-sidebar {
+        width: 100%;
+        max-height: none;
+    }
+}
+
+@media (max-width: 782px) {
+    .vnf-gl-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
