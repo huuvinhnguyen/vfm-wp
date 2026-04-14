@@ -1,9 +1,11 @@
 /* VietFarmy Contact - Main Styles */
 
 .vnf-contact-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 40px 20px !important;
+    font-family: inherit !important;
+    color: inherit !important;
 }
 
 /* Welcome Message */
@@ -21,61 +23,61 @@
 
 /* 2-Column Layout */
 .vnf-contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-bottom: 48px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 32px !important;
+    margin-bottom: 48px !important;
 }
 
 @media (max-width: 900px) {
     .vnf-contact-wrapper {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 }
 
 /* Cards */
 .vnf-contact-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    background: #fff !important;
+    border-radius: 12px !important;
+    padding: 32px !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,.08) !important;
 }
 
 .vnf-contact-card h3 {
-    margin: 0 0 24px;
-    font-size: 1.25rem;
-    color: #2d5016;
+    margin: 0 0 24px !important;
+    font-size: 1.25rem !important;
+    color: #2d5016 !important;
 }
 
 /* Form Styles */
 .vnf-contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
 }
 
 .vnf-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
 }
 
 @media (max-width: 600px) {
     .vnf-form-row {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 }
 
 .vnf-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
 }
 
 .vnf-form-group label {
-    font-weight: 600;
-    color: #333;
-    font-size: 14px;
+    font-weight: 600 !important;
+    color: #333 !important;
+    font-size: 14px !important;
 }
 
 .vnf-form-group label .required {

@@ -92,31 +92,31 @@ function vnf_contact_shortcode($atts) {
     $welcome = $settings['welcome_msg'] ?: $defaults['welcome_msg'];
     ?>
 
-    <section class="vnf-contact-section">
-        <div class="vnf-contact-welcome">
-            <h2><?php echo esc_html($welcome); ?></h2>
+    <div class="vnf-contact-container" style="max-width:1200px;margin:0 auto;padding:40px 20px;font-family:inherit;">
+        <div class="vnf-contact-welcome" style="text-align:center;margin-bottom:48px;">
+            <h2 style="font-size:1.75rem;color:#2d5016;font-weight:600;line-height:1.4;margin:0;"><?php echo esc_html($welcome); ?></h2>
         </div>
 
-        <div class="vnf-contact-wrapper">
+        <div class="vnf-contact-wrapper" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:48px;">
             <!-- Left Column: Form -->
             <div class="vnf-contact-col vnf-contact-col-left">
-                <div class="vnf-contact-card">
-                    <h3>Gửi tin nhắn</h3>
-                    <form id="vnf-contact-form" class="vnf-contact-form">
-                        <div class="vnf-form-row">
+                <div class="vnf-contact-card" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.08);">
+                    <h3 style="margin:0 0 24px;font-size:1.25rem;color:#2d5016;">Gửi tin nhắn</h3>
+                    <form id="vnf-contact-form" class="vnf-contact-form" style="display:flex;flex-direction:column;gap:20px;">
+                        <div class="vnf-form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
                             <div class="vnf-form-group">
-                                <label for="vc-name">Họ và tên <span class="required">*</span></label>
-                                <input type="text" id="vc-name" name="name" required placeholder="Nhập họ và tên của bạn">
+                                <label for="vc-name" style="font-weight:600;color:#333;font-size:14px;display:block;margin-bottom:6px;">Họ và tên <span style="color:#e53935;">*</span></label>
+                                <input type="text" id="vc-name" name="name" required placeholder="Nhập họ và tên của bạn" style="width:100%;padding:12px 16px;border:2px solid #e8e8e8;border-radius:8px;font-size:15px;box-sizing:border-box;">
                             </div>
                             <div class="vnf-form-group">
-                                <label for="vc-phone">Số điện thoại/Zalo <span class="required">*</span></label>
-                                <input type="tel" id="vc-phone" name="phone" required placeholder="09xx xxx xxx">
+                                <label for="vc-phone" style="font-weight:600;color:#333;font-size:14px;display:block;margin-bottom:6px;">Số điện thoại/Zalo <span style="color:#e53935;">*</span></label>
+                                <input type="tel" id="vc-phone" name="phone" required placeholder="09xx xxx xxx" style="width:100%;padding:12px 16px;border:2px solid #e8e8e8;border-radius:8px;font-size:15px;box-sizing:border-box;">
                             </div>
                         </div>
 
                         <div class="vnf-form-group">
-                            <label for="vc-subject">Bạn quan tâm đến</label>
-                            <select id="vc-subject" name="subject">
+                            <label for="vc-subject" style="font-weight:600;color:#333;font-size:14px;display:block;margin-bottom:6px;">Bạn quan tâm đến</label>
+                            <select id="vc-subject" name="subject" style="width:100%;padding:12px 16px;border:2px solid #e8e8e8;border-radius:8px;font-size:15px;box-sizing:border-box;">
                                 <option value="">-- Chọn --</option>
                                 <option value="mua-le">Mua lẻ</option>
                                 <option value="nhap-si">Nhập sỉ cho quán</option>
@@ -127,11 +127,11 @@ function vnf_contact_shortcode($atts) {
                         </div>
 
                         <div class="vnf-form-group">
-                            <label for="vc-message">Lời nhắn</label>
-                            <textarea id="vc-message" name="message" rows="4" placeholder="Viết lời nhắn của bạn..."></textarea>
+                            <label for="vc-message" style="font-weight:600;color:#333;font-size:14px;display:block;margin-bottom:6px;">Lời nhắn</label>
+                            <textarea id="vc-message" name="message" rows="4" placeholder="Viết lời nhắn của bạn..." style="width:100%;padding:12px 16px;border:2px solid #e8e8e8;border-radius:8px;font-size:15px;resize:vertical;box-sizing:border-box;"></textarea>
                         </div>
 
-                        <button type="submit" class="vnf-btn vnf-btn-primary" id="vc-submit">
+                        <button type="submit" class="vnf-btn vnf-btn-primary" id="vc-submit" style="padding:14px 32px;border:none;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;background:linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);color:#fff;">
                             <span class="vnf-btn-text">Gửi Tin Nhắn</span>
                             <span class="vnf-btn-loading" style="display:none;">Đang gửi...</span>
                         </button>
@@ -143,26 +143,26 @@ function vnf_contact_shortcode($atts) {
 
             <!-- Right Column: Info -->
             <div class="vnf-contact-col vnf-contact-col-right">
-                <div class="vnf-contact-card">
+                <div class="vnf-contact-card" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.08);">
                     <!-- Trust Image -->
                     <?php if (!empty($settings['image_trust'])) : ?>
-                        <div class="vnf-contact-trust-img">
-                            <img src="<?php echo esc_url($settings['image_trust']); ?>" alt="VietFarmy Team">
+                        <div class="vnf-contact-trust-img" style="margin-bottom:24px;border-radius:8px;overflow:hidden;">
+                            <img src="<?php echo esc_url($settings['image_trust']); ?>" alt="VietFarmy Team" style="width:100%;height:180px;object-fit:cover;">
                         </div>
                     <?php endif; ?>
 
-                    <div class="vnf-contact-info-list">
+                    <div class="vnf-contact-info-list" style="display:flex;flex-direction:column;gap:20px;">
                         <!-- Address -->
                         <?php if (!empty($settings['address'])) : ?>
-                            <div class="vnf-contact-info-item">
-                                <div class="vnf-info-icon">
+                            <div class="vnf-contact-info-item" style="display:flex;gap:16px;align-items:flex-start;">
+                                <div class="vnf-info-icon" style="width:40px;height:40px;border-radius:50%;background:#E8F5E9;color:#4CAF50;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                                 </div>
                                 <div class="vnf-info-content">
-                                    <strong><?php _e('Địa chỉ', 'vnf-contact'); ?></strong>
-                                    <p><?php echo esc_html($settings['address']); ?></p>
+                                    <strong style="display:block;color:#333;margin-bottom:4px;">Địa chỉ</strong>
+                                    <p style="margin:0;color:#555;font-size:15px;"><?php echo esc_html($settings['address']); ?></p>
                                     <?php if (!empty($settings['welcome_note'])) : ?>
-                                        <small class="vnf-welcome-note"><?php echo esc_html($settings['welcome_note']); ?></small>
+                                        <small class="vnf-welcome-note" style="display:block;margin-top:4px;color:#4CAF50;font-style:italic;"><?php echo esc_html($settings['welcome_note']); ?></small>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -170,60 +170,60 @@ function vnf_contact_shortcode($atts) {
 
                         <!-- Phone -->
                         <?php if (!empty($settings['phone_display'])) : ?>
-                            <div class="vnf-contact-info-item">
-                                <div class="vnf-info-icon">
+                            <div class="vnf-contact-info-item" style="display:flex;gap:16px;align-items:flex-start;">
+                                <div class="vnf-info-icon" style="width:40px;height:40px;border-radius:50%;background:#E8F5E9;color:#4CAF50;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                                 </div>
                                 <div class="vnf-info-content">
-                                    <strong>Hotline / Zalo</strong>
-                                    <p>
-                                        <a href="tel:<?php echo preg_replace('/\D/', '', $settings['phone']); ?>" class="vnf-phone-link">
+                                    <strong style="display:block;color:#333;margin-bottom:4px;">Hotline / Zalo</strong>
+                                    <p style="margin:0;">
+                                        <a href="tel:<?php echo preg_replace('/\D/', '', $settings['phone']); ?>" class="vnf-phone-link" style="color:#4CAF50;font-weight:600;font-size:18px;text-decoration:none;">
                                             <?php echo esc_html($settings['phone_display']); ?>
                                         </a>
                                     </p>
-                                    <small>Hỗ trợ 24/7</small>
+                                    <small style="color:#888;font-size:12px;">Hỗ trợ 24/7</small>
                                 </div>
                             </div>
                         <?php endif; ?>
 
                         <!-- Email -->
                         <?php if (!empty($settings['email'])) : ?>
-                            <div class="vnf-contact-info-item">
-                                <div class="vnf-info-icon">
+                            <div class="vnf-contact-info-item" style="display:flex;gap:16px;align-items:flex-start;">
+                                <div class="vnf-info-icon" style="width:40px;height:40px;border-radius:50%;background:#E8F5E9;color:#4CAF50;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                 </div>
                                 <div class="vnf-info-content">
-                                    <strong>Email</strong>
-                                    <p><a href="mailto:<?php echo esc_attr($settings['email']); ?>"><?php echo esc_html($settings['email']); ?></a></p>
+                                    <strong style="display:block;color:#333;margin-bottom:4px;">Email</strong>
+                                    <p style="margin:0;color:#555;font-size:15px;"><a href="mailto:<?php echo esc_attr($settings['email']); ?>" style="color:#555;text-decoration:none;"><?php echo esc_html($settings['email']); ?></a></p>
                                 </div>
                             </div>
                         <?php endif; ?>
 
                         <!-- Working Time -->
                         <?php if (!empty($settings['working_time'])) : ?>
-                            <div class="vnf-contact-info-item">
-                                <div class="vnf-info-icon">
+                            <div class="vnf-contact-info-item" style="display:flex;gap:16px;align-items:flex-start;">
+                                <div class="vnf-info-icon" style="width:40px;height:40px;border-radius:50%;background:#E8F5E9;color:#4CAF50;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                                 </div>
                                 <div class="vnf-info-content">
-                                    <strong>Giờ làm việc</strong>
-                                    <p><?php echo esc_html($settings['working_time']); ?></p>
+                                    <strong style="display:block;color:#333;margin-bottom:4px;">Giờ làm việc</strong>
+                                    <p style="margin:0;color:#555;font-size:15px;"><?php echo esc_html($settings['working_time']); ?></p>
                                 </div>
                             </div>
                         <?php endif; ?>
                     </div>
 
                     <!-- Social Links -->
-                    <div class="vnf-contact-social">
+                    <div class="vnf-contact-social" style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
                         <?php if (!empty($settings['facebook_url'])) : ?>
-                            <a href="<?php echo esc_url($settings['facebook_url']); ?>" target="_blank" rel="noopener" class="vnf-social-btn vnf-social-facebook">
+                            <a href="<?php echo esc_url($settings['facebook_url']); ?>" target="_blank" rel="noopener" class="vnf-social-btn vnf-social-facebook" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;background:#1877F2;color:#fff;">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                                 <?php echo esc_html($settings['facebook_name'] ?: 'Facebook'); ?>
                             </a>
                         <?php endif; ?>
 
                         <?php if (!empty($settings['zalo_id'])) : ?>
-                            <a href="https://zalo.me/<?php echo esc_attr($settings['zalo_id']); ?>" target="_blank" rel="noopener" class="vnf-social-btn vnf-social-zalo">
+                            <a href="https://zalo.me/<?php echo esc_attr($settings['zalo_id']); ?>" target="_blank" rel="noopener" class="vnf-social-btn vnf-social-zalo" style="display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;background:#0068FF;color:#fff;">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="11" fill="#0068FF"/><path d="M12 6C8.13 6 5 9.13 5 13c0 2.38 1.19 4.47 3 5.74V22l4.11-2.26c.78.21 1.61.26 2.39.26 3.87 0 7-3.13 7-7s-3.13-7-7-7z" fill="#fff"/></svg>
                                 Nhắn Zalo
                             </a>
@@ -232,9 +232,9 @@ function vnf_contact_shortcode($atts) {
 
                     <!-- QR Zalo -->
                     <?php if (!empty($settings['show_qr_zalo']) && !empty($settings['qr_zalo_image'])) : ?>
-                        <div class="vnf-contact-qr">
-                            <h4>Quét QR để thêm Zalo</h4>
-                            <img src="<?php echo esc_url($settings['qr_zalo_image']); ?>" alt="Zalo QR Code">
+                        <div class="vnf-contact-qr" style="margin-top:24px;padding-top:24px;border-top:1px solid #eee;text-align:center;">
+                            <h4 style="margin:0 0 12px;color:#333;">Quét QR để thêm Zalo</h4>
+                            <img src="<?php echo esc_url($settings['qr_zalo_image']); ?>" alt="Zalo QR Code" style="max-width:140px;border-radius:8px;">
                         </div>
                     <?php endif; ?>
                 </div>
@@ -243,14 +243,14 @@ function vnf_contact_shortcode($atts) {
 
         <!-- Map Section -->
         <?php if (!empty($settings['map_embed'])) : ?>
-            <div class="vnf-contact-map">
-                <h3>Tìm chúng tôi trên bản đồ</h3>
-                <div class="vnf-contact-map-embed">
+            <div class="vnf-contact-map" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.08);">
+                <h3 style="margin:0 0 20px;color:#2d5016;">Tìm chúng tôi trên bản đồ</h3>
+                <div class="vnf-contact-map-embed" style="border-radius:8px;overflow:hidden;">
                     <?php echo $settings['map_embed']; ?>
                 </div>
             </div>
         <?php endif; ?>
-    </section>
+    </div>
 
     <?php
     return ob_get_clean();
