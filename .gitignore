@@ -19,6 +19,8 @@ wp-config.php
 # Cho phép plugin của bạn
 !/wp-content/plugins/vnf-slideshow/
 !/wp-content/plugins/vnf-slideshow/**
+!/wp-content/plugins/vnf-contact/
+!/wp-content/plugins/vnf-contact/**
 
 # Uploads & cache
 /wp-content/uploads/

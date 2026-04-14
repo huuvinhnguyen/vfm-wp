@@ -1,0 +1,73 @@
+/* VietFarmy Contact - Floating Buttons */
+
+.vnf-floating-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.vnf-floating-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.vnf-floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0,0,0,.3);
+}
+
+.vnf-floating-btn:active {
+    transform: scale(.95);
+}
+
+/* Zalo Button */
+.vnf-floating-zalo {
+    background: linear-gradient(135deg, #0068FF 0%, #004FC4 100%);
+    color: #fff;
+}
+
+/* Call Button */
+.vnf-floating-call {
+    background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+    color: #fff;
+}
+
+.vnf-floating-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Pulse animation */
+@keyframes vnf-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 104, 255, .5);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(0, 104, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 104, 255, 0);
+    }
+}
+
+.vnf-floating-zalo {
+    animation: vnf-pulse 2s infinite;
+}
+
+/* Hide on desktop */
+@media (min-width: 768px) {
+    .vnf-floating-buttons {
+        display: none;
+    }
+}
