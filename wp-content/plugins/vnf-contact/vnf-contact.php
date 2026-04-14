@@ -81,9 +81,8 @@ add_action('admin_enqueue_scripts', 'vnf_contact_admin_enqueue');
 
 function vnf_contact_enqueue() {
     $settings = get_option('vnf_contact_settings', array());
-    $is_mobile = wp_is_mobile();
 
-    // Always enqueue for contact page or when shortcode is present
+    // Load CSS/JS on contact page or when shortcode is present
     global $post;
     $has_shortcode = false;
 
@@ -91,7 +90,6 @@ function vnf_contact_enqueue() {
         $has_shortcode = has_shortcode($post->post_content, 'vnf_contact');
     }
 
-    // Load CSS/JS on contact pages or if shortcode detected
     if ($has_shortcode || is_page('lien-he') || is_page('contact')) {
         wp_enqueue_style('vnf-contact', VNF_CONTACT_URL . 'assets/css/contact.css', array(), '1.0.0');
         wp_enqueue_script('vnf-contact', VNF_CONTACT_URL . 'assets/js/contact.js', array('jquery'), '1.0.0', true);
@@ -100,18 +98,6 @@ function vnf_contact_enqueue() {
             'ajaxUrl'  => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('vnf_contact_nonce'),
             'settings' => $settings,
-        ));
-    }
-
-    // Floating button for mobile
-    if (!empty($settings['show_floating']) && $is_mobile) {
-        wp_enqueue_style('vnf-contact-floating', VNF_CONTACT_URL . 'assets/css/floating.css', array(), '1.0.0');
-        wp_enqueue_script('vnf-contact-floating', VNF_CONTACT_URL . 'assets/js/floating.js', array('jquery'), '1.0.0', true);
-
-        wp_localize_script('vnf-contact-floating', 'vnfContactFloat', array(
-            'phone' => $settings['phone'] ?? '',
-            'zaloId'=> $settings['zalo_id'] ?? '',
-            'show'  => !empty($settings['show_floating']),
         ));
     }
 }
