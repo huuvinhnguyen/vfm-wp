@@ -221,9 +221,9 @@ function vnf_contact_settings_page() {
                     <tr>
                         <th scope="row">Xem trước</th>
                         <td>
-                            <div class="vnf-contact-map-preview">
+                            <div class="vnf-contact-map-preview" style="max-width:600px;">
                                 <?php if ($settings['map_embed']) : ?>
-                                    <?php echo $settings['map_embed']; ?>
+                                    <?php echo str_replace('<iframe ', '<iframe style="width:100%;height:300px;border:none;" ', $settings['map_embed']); ?>
                                 <?php else : ?>
                                     <p style="color:#999;">Chưa có bản đồ. Vui lòng nhập code embed.</p>
                                 <?php endif; ?>

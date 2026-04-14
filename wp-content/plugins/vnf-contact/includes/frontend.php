@@ -243,10 +243,10 @@ function vnf_contact_shortcode($atts) {
 
         <!-- Map Section -->
         <?php if (!empty($settings['map_embed'])) : ?>
-            <div class="vnf-contact-map" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.08);">
+            <div class="vnf-contact-map" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.08);margin-top:32px;">
                 <h3 style="margin:0 0 20px;color:#2d5016;">Tìm chúng tôi trên bản đồ</h3>
-                <div class="vnf-contact-map-embed" style="border-radius:8px;overflow:hidden;">
-                    <?php echo $settings['map_embed']; ?>
+                <div class="vnf-contact-map-embed" style="border-radius:8px;overflow:hidden;width:100%;">
+                    <?php echo str_replace('<iframe ', '<iframe style="width:100%;height:400px;border:none;" ', $settings['map_embed']); ?>
                 </div>
             </div>
         <?php endif; ?>
