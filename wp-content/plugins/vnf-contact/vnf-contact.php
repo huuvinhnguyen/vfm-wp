@@ -74,6 +74,46 @@ require_once VNF_CONTACT_DIR . 'includes/admin.php';
 require_once VNF_CONTACT_DIR . 'includes/frontend.php';
 
 // ================================================================
+// HIDE SIDEBAR ON CONTACT PAGE
+// ================================================================
+add_filter('gema_show_sidebar', 'vnf_contact_hide_sidebar_filter', 10, 2);
+
+function vnf_contact_hide_sidebar_filter($show, $post_id) {
+    if ($post_id) {
+        $post = get_post($post_id);
+        if ($post && has_shortcode($post->post_content, 'vnf_contact')) {
+            return false;
+        }
+    }
+    return $show;
+}
+
+// Alternative: use theme's content width filter
+add_filter('gema_main_content_width', function($width) {
+    if (is_singular('page')) {
+        global $post;
+        if ($post && has_shortcode($post->post_content, 'vnf_contact')) {
+            return 100; // Full width
+        }
+    }
+    return $width;
+});
+
+// Load full width template for contact page
+add_filter('template_include', function($template) {
+    if (is_singular('page')) {
+        global $post;
+        if ($post && has_shortcode($post->post_content, 'vnf_contact')) {
+            $custom_template = VNF_CONTACT_DIR . 'templates/fullwidth-contact.php';
+            if (file_exists($custom_template)) {
+                return $custom_template;
+            }
+        }
+    }
+    return $template;
+});
+
+// ================================================================
 // ENQUEUE ASSETS
 // ================================================================
 add_action('wp_enqueue_scripts', 'vnf_contact_enqueue');
