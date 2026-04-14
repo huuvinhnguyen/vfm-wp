@@ -303,38 +303,37 @@
     border-radius: 8px;
 }
 
-/* Map Section */
+/* Map Section - Override theme CSS */
 .vnf-contact-map {
-    background: #fff;
-    border-radius: 12px;
-    padding: 32px;
-    box-shadow: 0 2px 16px rgba(0,0,0,.08);
+    background: #fff !important;
+    border-radius: 12px !important;
+    padding: 32px !important;
+    box-shadow: 0 2px 16px rgba(0,0,0,.08) !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
 .vnf-contact-map h3 {
-    margin: 0 0 20px;
-    color: #2d5016;
+    margin: 0 0 20px !important;
+    color: #2d5016 !important;
 }
 
 .vnf-contact-map-embed {
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 1 !important;
 }
 
-.vnf-contact-map-embed iframe {
+.vnf-contact-map-embed iframe,
+.vnf-contact-map iframe {
     width: 100% !important;
     height: 400px !important;
     border: none !important;
     display: block !important;
     position: relative !important;
     z-index: 1 !important;
-}
-
-/* Force override any theme issues */
-.vnf-contact-map-embed * {
-    max-width: none !important;
-    width: auto !important;
 }
 
 @media (max-width: 600px) {
