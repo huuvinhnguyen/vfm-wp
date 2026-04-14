@@ -6,54 +6,34 @@
 
 get_header(); ?>
 
-    <div class="u-container-sides-spacing">
-    <div class="c-layout  o-wrapper  u-container-width">
-
-        <?php get_template_part('template-parts/content', 'header'); ?>
-
-        <div id="primary" class="content-area content-area-fullwidth">
-
-            <main id="main" class="site-main-fullwidth" role="main">
-
-                <?php while ( have_posts() ) : the_post(); ?>
-
-                    <?php the_content(); ?>
-
-                    <?php if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif; ?>
-
-                <?php endwhile; ?>
-
-            </main>
-
-        </div>
-
-    </div>
-    </div>
-
 <style>
-/* Override theme container to center properly */
-.o-wrapper {
+/* Reset and center everything */
+.c-layout {
+    display: block !important;
     max-width: 1240px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
 }
 
-/* Full width for contact page */
 .content-area-fullwidth {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    float: none !important;
+}
+
+.site-main-fullwidth {
     width: 100% !important;
     max-width: 100% !important;
 }
 
-.site-main-fullwidth {
-    max-width: 100% !important;
-    padding: 0 !important;
-}
-
-/* Fix padding/margin */
+/* Ensure content is centered */
 .vnf-contact-container {
     max-width: 1200px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 /* Mobile responsive - 1 column */
@@ -82,5 +62,16 @@ get_header(); ?>
     }
 }
 </style>
+
+    <div class="content-area-fullwidth">
+        <main class="site-main-fullwidth" role="main">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <?php the_content(); ?>
+                <?php if ( comments_open() || get_comments_number() ) :
+                    comments_template();
+                endif; ?>
+            <?php endwhile; ?>
+        </main>
+    </div>
 
 <?php get_footer();
