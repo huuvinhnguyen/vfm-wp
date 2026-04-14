@@ -246,7 +246,15 @@ function vnf_contact_shortcode($atts) {
             <div class="vnf-contact-map" style="background:#fff;border-radius:12px;padding:32px;box-shadow:0 2px 16px rgba(0,0,0,.08);margin-top:32px;">
                 <h3 style="margin:0 0 20px;color:#2d5016;">Tìm chúng tôi trên bản đồ</h3>
                 <div class="vnf-contact-map-embed" style="border-radius:8px;overflow:hidden;width:100%;">
-                    <?php echo str_replace('<iframe ', '<iframe style="width:100%;height:400px;border:none;" ', $settings['map_embed']); ?>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31091.55568277558!2d108.0057!3d13.9385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316c21ce86f444a3%3A0x75f0f45f6027cf2c!2sPleiku%2C%20Gia%20Lai!5e0!3m2!1sen!2s!4v1600000000000!5m2!1sen!2s"
+                        width="100%"
+                        height="400"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
         <?php endif; ?>
