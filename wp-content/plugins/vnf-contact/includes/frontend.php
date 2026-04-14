@@ -53,28 +53,6 @@ function vnf_contact_ajax_submit() {
     }
 }
 
-// Create table on activation
-function vnf_contact_activate() {
-    global $wpdb;
-    $table = $wpdb->prefix . 'vnf_contact_messages';
-
-    $sql = "CREATE TABLE IF NOT EXISTS $table (
-        id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        name        VARCHAR(255) NOT NULL,
-        phone       VARCHAR(32) NOT NULL,
-        subject     VARCHAR(255) NOT NULL DEFAULT '',
-        message     TEXT NOT NULL,
-        ip          VARCHAR(45) NOT NULL DEFAULT '',
-        status      TINYINT(1) NOT NULL DEFAULT 0,
-        created_at  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        KEY idx_status (status),
-        KEY idx_created (created_at)
-    ) {$wpdb->get_charset_collate()};";
-
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);
-}
-
 // ================================================================
 // SHORTCODE
 // ================================================================
