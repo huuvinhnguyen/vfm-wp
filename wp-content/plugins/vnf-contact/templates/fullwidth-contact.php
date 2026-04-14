@@ -39,6 +39,32 @@ get_header(); ?>
 .content-area-fullwidth #main {
     max-width: 100% !important;
 }
+
+/* Mobile responsive - 1 column */
+@media (max-width: 768px) {
+    .vnf-contact-wrapper {
+        grid-template-columns: 1fr !important;
+    }
+    .vnf-contact-container {
+        padding: 20px 15px !important;
+    }
+    .vnf-contact-card {
+        padding: 20px !important;
+    }
+    .vnf-form-row {
+        grid-template-columns: 1fr !important;
+    }
+    .vnf-contact-info-item {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    .vnf-contact-social {
+        flex-direction: column !important;
+    }
+    .vnf-social-btn {
+        justify-content: center !important;
+    }
+}
 </style>
 
 <?php get_footer();
