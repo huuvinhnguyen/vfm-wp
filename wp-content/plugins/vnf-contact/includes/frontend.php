@@ -92,7 +92,7 @@ function vnf_contact_shortcode($atts) {
     $welcome = $settings['welcome_msg'] ?: $defaults['welcome_msg'];
     ?>
 
-    <div class="vnf-contact-container" style="max-width:1200px;margin:0 auto;padding:40px 20px;font-family:inherit;">
+    <div class="vnf-contact-container" style="max-width:1200px;margin:0 auto;padding:60px 20px 40px;font-family:inherit;">
         <div class="vnf-contact-welcome" style="text-align:center;margin-bottom:48px;">
             <h2 style="font-size:1.75rem;color:#2d5016;font-weight:600;line-height:1.4;margin:0;"><?php echo esc_html($welcome); ?></h2>
         </div>

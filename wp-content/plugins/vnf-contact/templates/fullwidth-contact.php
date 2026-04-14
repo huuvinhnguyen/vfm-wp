@@ -33,11 +33,27 @@ get_header(); ?>
     </div>
 
 <style>
+/* Override theme container to center properly */
+.o-wrapper {
+    max-width: 1240px !important;
+}
+
+/* Full width for contact page */
 .content-area-fullwidth {
+    width: 100% !important;
     max-width: 100% !important;
 }
-.content-area-fullwidth #main {
+
+.site-main-fullwidth {
     max-width: 100% !important;
+    padding: 0 !important;
+}
+
+/* Fix padding/margin */
+.vnf-contact-container {
+    max-width: 1200px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* Mobile responsive - 1 column */
