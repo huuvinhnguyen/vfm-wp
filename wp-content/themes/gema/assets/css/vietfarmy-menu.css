@@ -257,3 +257,47 @@
         padding: 12px 15px !important;
     }
 }
+
+
+/* =============================================
+   FIX: Empty Column Block Issue on Desktop
+   ============================================= */
+/* Fix cho trang xin-cam-on và các trang có empty column block */
+.wp-block-columns {
+    display: block !important;
+}
+
+.wp-block-columns.is-layout-flex {
+    display: flex !important;
+    flex-wrap: wrap !important;
+}
+
+/* Ẩn column trống không có content */
+.wp-block-column:empty {
+    display: none !important;
+}
+
+/* Đảm bảo images hiển thị đúng */
+.entry-content .wp-block-image {
+    display: block !important;
+    margin: 1em 0 !important;
+}
+
+.entry-content .wp-block-image img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+}
+
+/* Override flex-wrap: nowrap cho columns container */
+.wp-container-core-columns-is-layout-9d6595d7,
+[class*="wp-container-core-columns"] {
+    flex-wrap: wrap !important;
+}
+
+/* Đảm bảo content area hiển thị */
+.post__content,
+.entry-content {
+    display: block !important;
+    width: 100% !important;
+}
